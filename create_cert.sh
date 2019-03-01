@@ -1,4 +1,4 @@
-read -p "Enter host name (e.g. localhost.dev):" hostname
+read -p "Enter host name to use for local development e.g. localhost.dev (must have a .extension of some kind):" hostname
 
 openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
 
@@ -38,6 +38,6 @@ fi
 
 
 echo
-echo "Certs created, use by running:-"
-echo " puma -b 'ssl://merchant.localhost.p4:3000?key=server.key&cert=server.crt'"
+echo "Certs created ready for use in your server, for example:-"
+echo " puma -b 'ssl://$hostname:3000?key=server.key&cert=server.crt'"
 echo
