@@ -4,9 +4,10 @@ openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
 
 openssl rsa -passin pass:x -in server.pass.key -out server.key
 
-openssl req -new -key server.key -out server.csr
+openssl req -new -key server.key -out server.csr -subj "/C=GB/ST=London/L=London/O=Acme Inc/CN=$hostname"
 
-echo "authorityKeyIdentifier=keyid,issuer
+echo "
+authorityKeyIdentifier=keyid,issuer
 basicConstraints=CA:FALSE
 keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
 subjectAltName = @alt_names
@@ -25,7 +26,7 @@ then
   sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain server.crt
 fi
 
-
+echo
 read -p "Add host to hosts file? (y/n)" -n 1 -r
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
