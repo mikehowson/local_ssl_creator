@@ -9,7 +9,21 @@ hosts file ready for dev.
 To execute in terminal:-
 
 ```
-./create_cert.sh
+./bin/create_cert.sh
 ```
 
 this will produce a server.crt and a server.key
+
+### Install as a gem
+
+To install the script as a gem to execute from anywhere:-
+
+```
+gem install localhoster
+```
+
+Now execute by calling:-
+
+```
+localhoster
+```
