@@ -27,3 +27,13 @@ Now execute by calling:-
 ```
 localhoster
 ```
+
+### Utilise keys
+
+To utilise the server.crt and server.key created for localhost.dev in puma:-
+
+```
+puma -b 'ssl://127.0.0.1:3000?key=crossdomaincerts/server.key&cert=crossdomaincerts/server.crt'
+```
+
+Then access the server on https://localhost.dev:3000
